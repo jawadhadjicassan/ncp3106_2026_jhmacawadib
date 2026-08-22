@@ -1,0 +1,281 @@
+/* Base Reset & Snap Scroll Setup */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden; /* Fixes horizontal scroll globally */
+    overflow-y: hidden;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.scroll-container {
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden; /* Fixes horizontal scroll inside the snap container */
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
+.page {
+    height: 100vh;
+    width: 100vw;
+    max-width: 100vw; /* Prevents overflow from child elements */
+    scroll-snap-align: start;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Floating Dot Navigation */
+.dot-navigation {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 1000;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(225, 238, 248, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.dot:hover, .dot.active {
+    background-color: #e1eef8;
+    transform: scale(1.2);
+}
+
+/* Page 1 Layout */
+.page-1 {
+    background: linear-gradient(135deg, #020b1e 0%, #061d47 50%, #0d4b9f 100%);
+    color: #e1eef8;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 8vh 3vw 0 3vw;
+    position: relative;
+}
+
+/* Persistent Fixed Global Header */
+.global-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2.5vh 3vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #4da6e0;
+    z-index: 10;
+}
+
+.p1-left-meta-group {
+    display: flex;
+    gap: 20px;
+}
+
+.p1-left-meta a,
+.p1-right-meta a {
+    color: #4da6e0;
+    text-decoration: none;
+    font-size: clamp(10px, 0.85vw, 12px);
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    transition: opacity 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.p1-left-meta a:hover,
+.p1-right-meta a:hover {
+    opacity: 0.8;
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+}
+
+/* Hero Section */
+.p1-hero-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    flex: 1;
+    width: 100%;
+}
+
+.p1-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 9.5vw, 11rem);
+    font-weight: 300;
+    line-height: 0.85;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+    z-index: 1;
+    pointer-events: none;
+    letter-spacing: 0.05em;
+    color: #ffffff;
+    white-space: nowrap;
+}
+
+.p1-hero-center {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.p1-arch-container {
+    position: relative;
+    width: clamp(100px, 22vw, 250px);
+    height: clamp(200px, 35vh, 420px);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.p1-arch-bg {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #bfdaf0;
+    border-radius: 160px 160px 0 0;
+    z-index: 1;
+}
+
+.p1-popout-img {
+    position: absolute;
+    bottom: 0;
+    z-index: 2;
+    width: 135%;
+    height: 280%;
+    left: -14%;
+    object-fit: cover;
+    object-position: bottom center;
+    pointer-events: none;
+}
+
+/* Sidebars */
+.p1-sidebar-left, 
+.p1-sidebar-right {
+    font-size: clamp(9px, 0.75vw, 11px);
+    letter-spacing: 2px;
+    line-height: 2;
+    color: #4da6e0;
+    z-index: 3;
+}
+
+/* Bottom Card */
+.p1-bottom-card {
+    background: #e1eef8;
+    color: #020b1e;
+    border-radius: 30px 30px 0 0;
+    padding: 2.5vh 4vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 4;
+    width: 100%;
+    min-height: 22vh;
+}
+
+.p1-bottom-card h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.4rem, 2.2vw, 2.5rem);
+    margin-bottom: 6px;
+    color: #061d47;
+}
+
+.p1-bottom-card p {
+    font-size: clamp(10px, 0.85vw, 13px);
+    max-width: 420px;
+}
+
+.p1-bottom-card ul {
+    list-style: none;
+    line-height: 1.8;
+    font-size: clamp(10px, 0.85vw, 13px);
+}
+
+.section-label {
+    font-size: clamp(9px, 0.7vw, 11px);
+    letter-spacing: 1.5px;
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+.script-font {
+    font-family: 'Sacramento', cursive;
+    font-size: clamp(1.2rem, 2vw, 1.8rem);
+    margin-top: 6px;
+    color: #0d4b9f;
+}
+
+.p1-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-size: clamp(9px, 0.75vw, 11px);
+    letter-spacing: 1.5px;
+    font-weight: 600;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .page-1 {
+        padding: 20px 20px 0 20px;
+    }
+
+    .p1-sidebar-left, 
+    .p1-sidebar-right {
+        display: none;
+    }
+
+    .p1-title {
+        font-size: 12vw;
+        top: 30%;
+        white-space: normal;
+    }
+
+    .p1-arch-container {
+        width: 200px;
+        height: 260px;
+    }
+
+    .p1-popout-img {
+        width: 140%;
+        max-height: 40vh;
+    }
+
+    .p1-bottom-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        padding: 20px;
+        border-radius: 20px 20px 0 0;
+    }
+
+    .p1-badge {
+        align-items: flex-start;
+    }
+}
