@@ -83,6 +83,7 @@
     justify-content: space-around;
     align-items: center;
     padding: 30px 5%;
+    margin-top: -40px;
     border-top: 1px solid rgba(13, 75, 159, 0.1);
 }
 
@@ -110,23 +111,4 @@
     justify-content: center;
     border-radius: 12px;
     transition: all 0.3s ease;
-}
-
-.feature-item:hover .icon {
-    background: #0d4b9f;
-    color: #ffffff;
-    box-shadow: 0 5px 15px rgba(13, 75, 159, 0.3);
-}
-
-.feature-item strong {
-    display: block;
-    font-size: 11px;
-    letter-spacing: 1px;
-    color: #061d47;
-}
-
-.feature-item p {
-    font-size: 11px;
-    color: #0d4b9f;
-    margin-top: 2px;
 }
